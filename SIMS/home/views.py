@@ -53,7 +53,7 @@ def checkout(request, *args, **kwargs):
         for i in tobj:
             iobj = Inventory.objects.get(pk=i.pid_id)
             print(type(iobj.quantity),iobj.quantity)
-            if iobj.quantity > 0 and (iobj.quantity - i.quantity_r) > 0:
+            if iobj.quantity > 0 and (iobj.quantity - i.quantity_r) >= 0:
                 i.success = True
                 i.save()
                 iobj.quantity = iobj.quantity - i.quantity_r
